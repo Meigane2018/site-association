@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Événements - Association des Phytopathologistes de la Zone CEMAC</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/luxon@2.3.0/build/global/luxon.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        :root {
+            --primary-color: #2C5F2D;
+            --secondary-color: #97BC62;
+            --text-color: #333333;
+            --background-color: #F0F0F0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .neumorphic {
+            background: var(--background-color);
+            box-shadow: 8px 8px 16px #d1d1d1, -8px -8px 16px #ffffff;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .neumorphic:hover {
+            box-shadow: 12px 12px 20px #d1d1d1, -12px -12px 20px #ffffff;
+        }
+
+        .event-card {
+            transition: transform 0.3s ease;
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .dark-mode {
+            --background-color: #2A2A2A;
+            --text-color: #F0F0F0;
+        }
+
+        .dark-mode .neumorphic {
+            box-shadow: 8px 8px 16px #1a1a1a, -8px -8px 16px #3a3a3a;
+        }
+
+        .dark-mode .neumorphic:hover {
+            box-shadow: 12px 12px 20px #1a1a1a, -12px -12px 20px #3a3a3a;
+        }
+
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <div id="particles-js"></div>
+
+    <header class="bg-white shadow-md dark:bg-gray-800 transition-colors duration-300">
+        <nav class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold text-green-700">
+                    <img src="images/logo.jpeg" alt="Logo" class="inline-block mr-2 rounded-full" width="50px">
+                    Phyto Asso
+                </div>
+                <div class="space-x-4">
+                    <a href="index.html" class="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white">Accueil</a>
+                    <a href="actualite.html" class="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white">Actualités</a>
+                    <a href="ressources.html" class="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white">Ressources</a>
+                    <a href="evenement.html" class="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white">Evenements</a>
+                    <a href="galerie.html" class="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white">Galerie</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white">Contact</a>
+                    <button id="darkModeToggle" class="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-grow container mx-auto px-6 py-8">
+        <h1 class="text-4xl font-bold mb-8 text-center text-primary-color dark:text-white">Événements</h1>
+
+        <div id="eventContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Event cards will be dynamically inserted here -->
+        </div>
+    </main>
+
+    <footer class="bg-white shadow-md dark:bg-gray-800 transition-colors duration-300 mt-12">
+        <div class="container mx-auto px-6 py-4 text-center text-gray-600 dark:text-gray-300">
+            <p>&copy; 2023 Association des Phytopathologistes de la Zone CEMAC. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: "#97BC62" },
+                shape: { type: "circle" },
+                opacity: { value: 0.5, random: false },
+                size: { value: 3, random: true },
+                line_linked: { enable: true, distance: 150, color: "#97BC62", opacity: 0.4, width: 1 },
+                move: { enable: true, speed: 6, direction: "none", random: false, straight: false, out_mode: "out", bounce: false }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" }, resize: true },
+                modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+            },
+            retina_detect: true
+        });
+
+        const DateTime = luxon.DateTime;
+
+        const events = [
+            {
+                title: "Conférence sur les Maladies Émergentes des Plantes",
+                date: "2023-09-15",
+                location: "Yaoundé, Cameroun",
+                description: "Une conférence internationale sur les dernières découvertes concernant les maladies émergentes des plantes dans la zone CEMAC."
+            },
+            {
+                title: "Atelier de Formation en Phytopathologie Moléculaire",
+                date: "2023-10-20",
+                location: "Libreville, Gabon",
+                description: "Un atelier pratique pour les chercheurs et étudiants sur les techniques moléculaires appliquées à la phytopathologie."
+            },
+            {
+                title: "Symposium sur la Gestion Durable des Cultures",
+                date: "2023-11-05",
+                location: "Bangui, République Centrafricaine",
+                description: "Un symposium axé sur les pratiques de gestion durable des cultures pour lutter contre les maladies des plantes."
+            },
+            {
+                title: "Journée de Sensibilisation à la Santé des Plantes",
+                date: "2023-12-01",
+                location: "N'Djamena, Tchad",
+                description: "Une journée dédiée à la sensibilisation du public sur l'importance de la santé des plantes pour la sécurité alimentaire."
+            },
+            {
+                title: "Colloque sur l'Impact du Changement Climatique sur les Pathogènes des Plantes",
+                date: "2024-01-25",
+                location: "Brazzaville, Congo",
+                description: "Un colloque international explorant les effets du changement climatique sur l'évolution et la propagation des pathogènes des plantes."
+            },
+            {
+                title: "Forum des Jeunes Chercheurs en Phytopathologie",
+                date: "2024-03-10",
+                location: "Malabo, Guinée Équatoriale",
+                description: "Un forum dédié aux jeunes chercheurs pour présenter leurs travaux et échanger avec des experts du domaine."
+            }
+        ];
+
+        function createEventCard(event) {
+            const eventDate = DateTime.fromISO(event.date);
+            const card = document.createElement('div');
+            card.className = 'event-card neumorphic p-6 flex flex-col justify-between';
+            card.innerHTML = `
+                <div>
+                    <h2 class="text-xl font-semibold mb-2">${event.title}</h2>
+                    <p class="text-gray-600 dark:text-gray-300 mb-2">
+                        <i class="fas fa-calendar-alt mr-2"></i>${eventDate.toLocaleString(DateTime.DATE_FULL)}
+                    </p>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        <i class="fas fa-map-marker-alt mr-2"></i>${event.location}
+                    </p>
+                    <p class="text-gray-700 dark:text-gray-200">${event.description}</p>
+                </div>
+                <a href="contact.html" class="mt-4 inline-block bg-primary-color text-green-800 py-2 px-4 rounded hover:bg-secondary-color transition duration-300">
+                    En savoir plus
+                </a>
+            `;
+            return card;
+        }
+
+        const eventContainer = document.getElementById('eventContainer');
+        events.forEach(event => {
+            eventContainer.appendChild(createEventCard(event));
+        });
+
+        // Dark mode toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const isDarkMode = body.classList.contains('dark-mode');
+            darkModeToggle.innerHTML = isDarkMode ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        });
+    </script>
+</body>
+</html>

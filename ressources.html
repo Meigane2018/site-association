@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ressources - Association des Phytopathologistes de la Zone CEMAC</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        :root {
+            --primary-color: #2C5F2D;
+            --secondary-color: #97BC62;
+            --text-color: #333333;
+            --background-color: #F5F5F5;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .resource-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .search-input {
+            border: 2px solid var(--primary-color);
+            border-radius: 25px;
+            padding: 10px 20px;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(44, 95, 45, 0.3);
+        }
+
+        .category-btn {
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 20px;
+            padding: 5px 15px;
+            transition: all 0.3s ease;
+        }
+
+        .category-btn:hover, .category-btn.active {
+            background-color: var(--primary-color);
+        }
+
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div id="particles-js"></div>
+
+    <header class="bg-white shadow-md">
+        <nav class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold text-green-700">
+                    <img src="images/logo.jpeg" alt="Logo" class="inline-block mr-2 rounded-full" width="50px">
+                    Phyto Asso
+                </div>
+                <div class="space-x-4">
+                    <a href="index.html" class="text-gray-600 hover:text-gray-800">Accueil</a>
+                    <a href="actualite.html" class="text-gray-600 hover:text-gray-800">Actualités</a>
+                    <a href="ressources.html" class="text-gray-600 hover:text-gray-800">Ressources</a>
+                    <a href="evenement.html" class="text-gray-600 hover:text-gray-800">Evenements</a>
+                    <a href="galerie.html" class="text-gray-600 hover:text-gray-800">Galerie</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-gray-800">Contact</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-8">
+        <h1 class="text-4xl font-bold mb-8 text-center">Ressources</h1>
+
+        <div class="mb-8">
+            <input type="text" placeholder="Rechercher des ressources..." class="w-full search-input">
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-4 mb-8">
+            <button class="category-btn active">Tous</button>
+            <button class="category-btn">Articles</button>
+            <button class="category-btn">Rapports</button>
+            <button class="category-btn">Présentations</button>
+            <button class="category-btn">Vidéos</button>
+            <button class="category-btn">Bases de données</button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="card p-6">
+                <i class="fas fa-file-alt resource-icon mb-4"></i>
+                <h3 class="text-xl font-semibold mb-2">Étude sur les pathogènes du maïs</h3>
+                <p class="text-gray-600 mb-4">Un article scientifique détaillant les dernières découvertes sur les pathogènes affectant les cultures de maïs.</p>
+                <a href="#" class="text-primary-color hover:underline">Lire l'article</a>
+            </div>
+            <div class="card p-6">
+                <i class="fas fa-chart-bar resource-icon mb-4"></i>
+                <h3 class="text-xl font-semibold mb-2">Rapport annuel 2022</h3>
+                <p class="text-gray-600 mb-4">Un rapport complet sur les activités et les avancées de l'association au cours de l'année 2022.</p>
+                <a href="#" class="text-primary-color hover:underline">Télécharger le rapport</a>
+            </div>
+            <div class="card p-6">
+                <i class="fas fa-video resource-icon mb-4"></i>
+                <h3 class="text-xl font-semibold mb-2">Conférence sur la résistance aux fongicides</h3>
+                <p class="text-gray-600 mb-4">Enregistrement vidéo de la conférence annuelle sur la résistance aux fongicides chez les cultures céréalières.</p>
+                <a href="#" class="text-primary-color hover:underline">Voir la vidéo</a>
+            </div>
+            <div class="card p-6">
+                <i class="fas fa-database resource-icon mb-4"></i>
+                <h3 class="text-xl font-semibold mb-2">Base de données des pathogènes</h3>
+                <p class="text-gray-600 mb-4">Une base de données complète répertoriant les pathogènes végétaux connus dans la zone CEMAC.</p>
+                <a href="#" class="text-primary-color hover:underline">Accéder à la base de données</a>
+            </div>
+            <div class="card p-6">
+                <i class="fas fa-file-powerpoint resource-icon mb-4"></i>
+                <h3 class="text-xl font-semibold mb-2">Présentation sur les nouvelles techniques de diagnostic</h3>
+                <p class="text-gray-600 mb-4">Une présentation détaillée des dernières avancées en matière de diagnostic des maladies des plantes.</p>
+                <a href="#" class="text-primary-color hover:underline">Voir la présentation</a>
+            </div>
+            <div class="card p-6">
+                <i class="fas fa-book resource-icon mb-4"></i>
+                <h3 class="text-xl font-semibold mb-2">Guide pratique de la phytopathologie</h3>
+                <p class="text-gray-600 mb-4">Un guide complet pour les étudiants et les professionnels de la phytopathologie.</p>
+                <a href="#" class="text-primary-color hover:underline">Télécharger le guide</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-6 mt-12">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2023 Association des Phytopathologistes de la Zone CEMAC. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: "#97BC62" },
+                shape: { type: "circle" },
+                opacity: { value: 0.5, random: false },
+                size: { value: 3, random: true },
+                line_linked: { enable: true, distance: 150, color: "#97BC62", opacity: 0.4, width: 1 },
+                move: { enable: true, speed: 6, direction: "none", random: false, straight: false, out_mode: "out", bounce: false }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" }, resize: true },
+                modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+            },
+            retina_detect: true
+        });
+
+        // Category buttons functionality
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                // Here you would typically filter the resources based on the selected category
+            });
+        });
+
+        // Search functionality (basic implementation)
+        const searchInput = document.querySelector('.search-input');
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const resources = document.querySelectorAll('.card');
+            resources.forEach(resource => {
+                const text = resource.textContent.toLowerCase();
+                resource.style.display = text.includes(searchTerm) ? '' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>

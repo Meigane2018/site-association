@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espace Membres - Association des Phytopathologistes de la Zone CEMAC</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        :root {
+            --primary-color: #2C5F2D;
+            --secondary-color: #97BC62;
+            --text-color: #333333;
+            --background-color: #F5F5F5;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .input-field {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 8px 12px;
+            transition: border-color 0.3s ease;
+        }
+
+        .input-field:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        .tab-active {
+            border-bottom: 2px solid var(--primary-color);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <header class="bg-green shadow-md">
+        <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="text-2xl font-bold text-green-700">
+                <img src="images/logo.jpeg" alt="Logo" class="inline-block mr-2 rounded-full" width="50px">
+                Phyto Asso
+            </div>
+            <ul class="flex space-x-6">
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="actualite.html" class="nav-link">Actualités</a></li>
+                <li><a href="ressources.html" class="nav-link">Ressources</a></li>
+                <li><a href="evenement.html" class="nav-link">Événements</a></li>
+                <li><a href="galerie.html" class="nav-link">Galerie</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="btn-primary"> <a href="membres.html">S'inscrire</a></button>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-8">
+        <h1 class="text-3xl font-bold mb-8 text-center">Espace Membres</h1>
+        
+        <div class="max-w-md mx-auto">
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="flex">
+                    <button id="loginTab" class="w-1/2 py-2 px-4 text-center font-semibold tab-active">Connexion</button>
+                    <button id="registerTab" class="w-1/2 py-2 px-4 text-center font-semibold">Inscription</button>
+                </div>
+                
+                <div id="loginForm" class="p-6">
+                    <form>
+                        <div class="mb-4">
+                            <label for="loginEmail" class="block mb-2 font-medium">Email</label>
+                            <input type="email" id="loginEmail" class="w-full input-field" required>
+                        </div>
+                        <div class="mb-6">
+                            <label for="loginPassword" class="block mb-2 font-medium">Mot de passe</label>
+                            <input type="password" id="loginPassword" class="w-full input-field" required>
+                        </div>
+                        <button type="submit" class="w-full btn-primary py-2 px-4 rounded-md">Se connecter</button>
+                    </form>
+                </div>
+                
+                <div id="registerForm" class="p-6 hidden">
+                    <form>
+                        <div class="mb-4">
+                            <label for="registerName" class="block mb-2 font-medium">Nom complet</label>
+                            <input type="text" id="registerName" class="w-full input-field" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="registerEmail" class="block mb-2 font-medium">Email</label>
+                            <input type="email" id="registerEmail" class="w-full input-field" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="registerPassword" class="block mb-2 font-medium">Mot de passe</label>
+                            <input type="password" id="registerPassword" class="w-full input-field" required>
+                        </div>
+                        <div class="mb-6">
+                            <label for="registerConfirmPassword" class="block mb-2 font-medium">Confirmer le mot de passe</label>
+                            <input type="password" id="registerConfirmPassword" class="w-full input-field" required>
+                        </div>
+                        <button type="submit" class="w-full btn-primary py-2 px-4 rounded-md">S'inscrire</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-green-800 text-white py-6 mt-12">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2023 Association des Phytopathologistes de la Zone CEMAC. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+        const loginTab = document.getElementById('loginTab');
+        const registerTab = document.getElementById('registerTab');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+
+        loginTab.addEventListener('click', () => {
+            loginTab.classList.add('tab-active');
+            registerTab.classList.remove('tab-active');
+            loginForm.classList.remove('hidden');
+            registerForm.classList.add('hidden');
+        });
+
+        registerTab.addEventListener('click', () => {
+            registerTab.classList.add('tab-active');
+            loginTab.classList.remove('tab-active');
+            registerForm.classList.remove('hidden');
+            loginForm.classList.add('hidden');
+        });
+    </script>
+</body>
+</html>

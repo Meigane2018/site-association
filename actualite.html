@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualités - Association des Phytopathologistes de la Zone CEMAC</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-green: #2E7D32;
+            --secondary-green: #4CAF50;
+            --light-green: #A5D6A7;
+            --dark-green: #1B5E20;
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--light-green);
+            color: var(--dark-green);
+        }
+
+        .btn {
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .card {
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .news-image {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .pagination-btn {
+            transition: all 0.3s ease;
+        }
+
+        .pagination-btn:hover:not(:disabled) {
+            background-color: var(--secondary-green);
+            color: var(--white);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <header class="bg-green shadow-md">
+        <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="text-2xl font-bold text-green-700">
+                <img src="images/logo.jpeg" alt="Logo" class="inline-block mr-2 rounded-full" width="50px">
+                Phyto Asso
+            </div>
+            <ul class="flex space-x-6">
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="actualite.html" class="nav-link">Actualités</a></li>
+                <li><a href="ressources.html" class="nav-link">Ressources</a></li>
+                <li><a href="evenement.html" class="nav-link">Événements</a></li>
+                <li><a href="galerie.html" class="nav-link">Galerie</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="btn-primary"> <a href="membres.html">S'inscrire</a></button>
+        </nav>
+    </header>
+
+    <main class="flex-grow container mx-auto px-4 py-8">
+        <h1 class="text-4xl font-bold mb-8 text-center">Actualités</h1>
+        
+        <div class="mb-8">
+            <input type="text" id="search" placeholder="Rechercher des actualités..." class="w-full px-4 py-2 rounded-full border-2 border-secondary-green focus:outline-none focus:ring-2 focus:ring-secondary-green">
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="news-container">
+            <!-- News items will be dynamically inserted here -->
+        </div>
+
+        <div class="flex justify-center mt-8 space-x-4">
+            <button id="prev-btn" class="pagination-btn px-4 py-2 rounded-full border-2 border-secondary-green text-secondary-green font-semibold disabled:opacity-50" disabled>Précédent</button>
+            <button id="next-btn" class="pagination-btn px-4 py-2 rounded-full border-2 border-secondary-green text-secondary-green font-semibold">Suivant</button>
+        </div>
+    </main>
+
+    <footer class="bg-primary-green text-white py-8 mt-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="font-bold mb-2">À propos de l'association</h3>
+                    <p>L'Association des Phytopathologistes de la Zone CEMAC promeut la recherche et l'éducation en phytopathologie dans la région.</p>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-2">Liens rapides</h3>
+                    <ul>
+                        <li><a href="#" class="hover:text-light-green">Accueil</a></li>
+                        <li><a href="#" class="hover:text-light-green">Ressources</a></li>
+                        <li><a href="#" class="hover:text-light-green">Événements</a></li>
+                        <li><a href="#" class="hover:text-light-green">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-2">Nous contacter</h3>
+                    <p>Email: contact@apzc.org</p>
+                    <p>Téléphone: +237 123 456 789</p>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-2xl hover:text-light-green"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-2xl hover:text-light-green"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-2xl hover:text-light-green"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const newsData = [
+            {
+                title: "Nouvelle découverte sur la résistance du manioc aux maladies",
+                date: "2023-05-15",
+                image: "https://picsum.photos/800/600?random=2",
+                summary: "Des chercheurs de l'APZC ont identifié un gène clé dans la résistance du manioc à la mosaïque africaine."
+            },
+            {
+                title: "Conférence annuelle de l'APZC 2023",
+                date: "2023-06-01",
+                image: "https://picsum.photos/800/600?random=3",
+                summary: "La conférence annuelle de l'APZC se tiendra du 15 au 17 septembre 2023 à Yaoundé, Cameroun."
+            },
+            {
+                title: "Lancement d'un programme de surveillance des maladies du cacao",
+                date: "2023-05-20",
+                image: "https://picsum.photos/800/600?random=4",
+                summary: "L'APZC lance un programme de surveillance des maladies du cacao dans la région CEMAC."
+            },
+            {
+                title: "Publication d'un guide sur la gestion durable des cultures vivrières",
+                date: "2023-05-10",
+                image: "https://picsum.photos/800/600?random=5",
+                summary: "L'APZC publie un guide complet sur la gestion durable des cultures vivrières en Afrique centrale."
+            },
+            {
+                title: "Collaboration internationale pour lutter contre la fusariose du bananier",
+                date: "2023-05-05",
+                image: "https://picsum.photos/800/600?random=6",
+                summary: "L'APZC s'associe à des instituts de recherche internationaux pour combattre la fusariose du bananier."
+            },
+            {
+                title: "Atelier de formation sur les techniques de diagnostic moléculaire",
+                date: "2023-04-28",
+                image: "https://picsum.photos/800/600?random=7",
+                summary: "Un atelier de formation sur les techniques avancées de diagnostic moléculaire des pathogènes végétaux aura lieu le mois prochain."
+            }
+        ];
+
+        const newsContainer = document.getElementById('news-container');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const searchInput = document.getElementById('search');
+
+        let currentPage = 1;
+        const itemsPerPage = 3;
+
+        function displayNews(page, filteredNews = newsData) {
+            const start = (page - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+            const paginatedNews = filteredNews.slice(start, end);
+
+            newsContainer.innerHTML = '';
+
+            paginatedNews.forEach(news => {
+                const newsCard = document.createElement('div');
+                newsCard.className = 'card fade-in';
+                newsCard.innerHTML = `
+                    <img src="${news.image}" alt="${news.title}" class="w-full news-image rounded-t-lg">
+                    <div class="p-4">
+                        <h2 class="text-xl font-bold mb-2">${news.title}</h2>
+                        <p class="text-sm text-gray-600 mb-2">${news.date}</p>
+                        <p>${news.summary}</p>
+                        <a href="#" class="inline-block mt-4 text-secondary-green hover:underline">Lire la suite</a>
+                    </div>
+                `;
+                newsContainer.appendChild(newsCard);
+            });
+
+            prevBtn.disabled = page === 1;
+            nextBtn.disabled = end >= filteredNews.length;
+        }
+
+        prevBtn.addEventListener('click', () => {
+            if (currentPage > 1) {
+                currentPage--;
+                displayNews(currentPage);
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentPage < Math.ceil(newsData.length / itemsPerPage)) {
+                currentPage++;
+                displayNews(currentPage);
+            }
+        });
+
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filteredNews = newsData.filter(news => 
+                news.title.toLowerCase().includes(searchTerm) || 
+                news.summary.toLowerCase().includes(searchTerm)
+            );
+            currentPage = 1;
+            displayNews(currentPage, filteredNews);
+        });
+
+        // Initial display
+        displayNews(currentPage);
+    </script>
+</body>
+</html>

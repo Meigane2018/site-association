@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apprendre encore plus sur la phytopathologie - APZC</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.11.4/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.11.4/dist/ScrollTrigger.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        :root {
+            --primary-color: #2C5F2D;
+            --secondary-color: #97BC62;
+            --text-color: #333333;
+            --background-color: #F0F0F0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .neumorphic {
+            background: var(--background-color);
+            box-shadow: 8px 8px 16px #d1d1d1, -8px -8px 16px #ffffff;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .neumorphic:hover {
+            box-shadow: 12px 12px 20px #d1d1d1, -12px -12px 20px #ffffff;
+        }
+
+        .dark-mode {
+            --background-color: #2A2A2A;
+            --text-color: #F0F0F0;
+        }
+
+        .dark-mode .neumorphic {
+            box-shadow: 8px 8px 16px #1a1a1a, -8px -8px 16px #3a3a3a;
+        }
+
+        .dark-mode .neumorphic:hover {
+            box-shadow: 12px 12px 20px #1a1a1a, -12px -12px 20px #3a3a3a;
+        }
+
+        .timeline-item {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #particleCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <canvas id="particleCanvas"></canvas>
+
+    <header class="bg-white shadow-md dark:bg-gray-800 transition-colors duration-300">
+        <nav class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center ">
+                <div class="text-2xl font-bold text-green-700">
+                    <img src="images/logo3.png" alt="Logo" class="inline-block mr-2 rounded-full" width="80px">
+                    APHYCEM
+                </div>
+                <div class="space-x-4">
+                    <a href="index.html" class="text-green-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white">Accueil</a>
+                    <a href="actualite.html" class="text-green-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white">Actualités</a>
+                    <a href="ressources.html" class="text-green-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white">Ressources</a>
+                    <a href="evenement.html" class="text-green-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white">evenements</a>
+                    <a href="galerie.html" class="text-green-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white">Galerie</a>
+                    <a href="contact.html" class="text-green-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white">Contact</a>
+                    <button class="btn-primary"> <a href="member.html">S'inscrire</a></button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-grow container mx-auto px-6 py-8">
+        <h1 class="text-4xl font-bold mb-8 text-center text-primary-color dark:text-white">En savoir plus sur l'APHYCEM</h1>
+
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-4 text-primary-color dark:text-white">AXES STRATEGIQUES</h2>
+            <div class="neumorphic p-6">
+                <p class="mb-4">Faire un inventaire des phytopathologistes au Cameroun, dans la sous-région et à la diaspora
+                   <br> - Mener des réflexions en vue de la création d’un journal scientifique
+                    <br>-Encourager les jeunes à développer des START UP susceptibles d’apporter des solutions aux problèmes des jeunes chercheurs ou de jeunes en stages de recherche dans un laboratoire de phyto pathologie.
+                    </p>
+                <p>-Promouvoir des liens entre l’Association et les structures ou ministères sectoriels comme l’Agriculture, le commerce et industrie et Norme.- Développement des liens formels entre l’APHYCEM et les Universités. 
+                    <br>- Elaboration d’une base de données sur les maladies des cultures
+                    </p>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-4 text-primary-color dark:text-white">Les objectifs de l’APHYCEM </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="neumorphic p-6">
+                    <p>1.	Promouvoir le développement de la pathologie végétale dans les domaines de la recherche, de l’enseignement et de la vulgarisation,
+                        <br>2.	Organiser des rencontres scientifiques entre phytopathologistes de la zone CEMAC, 
+                       <br> 3.	Susciter et favoriser les concertations et les échanges entre les phytopathologistes et les spécialistes connexes et ceux des domaines de la santé animale et humaine.
+                        </p>
+                </div>
+                <div class="neumorphic p-6">
+                    <p>5.	Contribuer à la diffusion de l’information phytosanitaire par l’intermédiaire de différents supports (Bulletins, journaux, journées portes ouvertes, et plateforme internet)
+                       <br> 6.	Développer la capacité humaine et matérielle de ses membres 
+                       <br> 7.	Susciter et maintenir des contacts permanents avec toutes les associations poursuivant les même buts  pour un rendez-vous du donner et du recevoir
+                       <br> 8.	Promouvoir la promotion de la Protection Intégrée contre les nuisibles.
+                        </p>
+                </div>
+                <div class="neumorphic p-6">
+                    <p>9. Faire un inventaire des phytopathologistes au Cameroun, dans la sous Région et à la diaspora
+                      <br>  10.	Mener des réflexions en vue de la création d’un journal scientifique
+                       <br> 11.	Encourager les jeunes à développer des START UP susceptibles d’apporter des solutions aux problèmes des jeunes chercheurs ou de jeunes en stages de recherche dans un laboratoire de phyto pathologie.
+                       <br> 12.	Promouvoir des liens entre l’Association et les structures ou ministères sectoriels comme l’Agriculture, le commerce et industrie et Norme.
+                       <br> 13.	Développement des liens formels entre l’APHYCEM et les Universités. 
+                      <br>  14.	Elaboration d’une base de données sur les maladies des cultures
+                        </p>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-4 text-primary-color dark:text-white">Quelques maladies des plantes </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="neumorphic p-6">
+                    <h3 class="container mx-auto px-6 py-8 text-center text-black dark:text-gray-300">Highland blight</h3>
+                    <img src="images/Image9.png" alt="Highland blight">
+                    <p>Causal organism: Exserohilun turcicum
+                        Symptoms: 
+                        Long, elliptical, grayish lesions found first on thelower leaves
+                        Larges number of grayish-black spores on the leaves (ears not affected directly)
+                        Spread: Overseeason as mycelia and conidia in infected leaves and husks; windborne
+                    </p>
+                </div>
+                <div class="neumorphic p-6">
+                    <h3 class="container mx-auto px-6 py-8 text-center text-black dark:text-gray-300">EAR and Stalk ROTS</h3>
+                    <img src="images/Image12.png" alt="EAR and Stalk ROTS">
+                    <p>Causal organisms: Fusarium, Diplodia,  complex of fungi
+                        Symptoms: mass of mycelia on husks or grains (# colorations)
+                        Premature death (stalk)
+                    </p>
+                </div>
+                <div class="neumorphic p-6">
+                    <h3 class="container mx-auto px-6 py-8 text-center text-black dark:text-gray-300">Common smut</h3>
+                    <img src="images/Image15.jpg" alt="Common smut">
+                    <p>Causal organism: Ustilago maydis
+                        Symptoms:
+                        Galls covered with light white tissues in place of grains. When sectionned, mass of black spores instead of endosperm
+                        Spread: 
+                        Soil
+                        Seeds
+                        Maize debris
+                         </p>
+                </div>
+            </div>
+        </section>
+
+        
+
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold mb-4 text-primary-color dark:text-white">Réalisations</h2>
+            <div class="neumorphic p-6">
+                <ul class="list-disc pl-6">
+                    <li class="mb-2">Rencontres nationales </li>
+                    <li class="mb-2">    Contacts avec tous les ministeres de la griculturre des pays de la CEMAC </li>
+                    <li class="mb-2"> Correspondances adressées au Ministres de la Recherche Scientifique et Technique du Camerooun </li>
+                    <li class="mb-2">Correspondance adressée au Directeur général de LIRAD </li>
+                    <li class="mb-2">  Contact avec L‘ IITA </li>
+                    <li class="mb-2">Contacts avec des Institutions Universitaires, des Universités d‘etat et privées </li>
+                    <li class="mb-2">   Contacts avec les instituts internationaux en charge de l'agriculture </li>
+                    <li class="mb-2">Ministère Camerounais des Relations extérieures </li>
+                    <li class="mb-2">  L‘Union Africaine </li>
+                    <li class="mb-2">  Contact avec le MINader avec un point focal nommé </li>
+                    <li class="mb-2"> Plusieurs firmes phytosanitaires (Nationaux et internationaux) </li>
+                    <li class="mb-2"> Le Comite Inter-Etats des pesticides de l‘afrique Centrale </li>
+                    
+                </ul>
+            </div>
+        </section>
+
+        
+    </main>
+
+    <footer class="bg-green-800 shadow-md dark:bg-gray-800 transition-colors duration-300 mt-12">
+        <div class="container mx-auto px-6 py-8 text-center text-white dark:text-gray-300">
+            <p>&copy; 2024 Association des Phytopathologistes de la Zone CEMAC. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Dark mode toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const isDarkMode = body.classList.contains('dark-mode');
+            darkModeToggle.innerHTML = isDarkMode ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        });
+
+        // Timeline animation
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.utils.toArray('.timeline-item').forEach((item, index) => {
+            gsap.to(item, {
+                scrollTrigger: {
+                    trigger: item,
+                    start: "top 80%",
+                    end: "top 50%",
+                    toggleClass: "visible",
+                    once: true
+                }
+            });
+        });
+
+        // Particle animation
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particles = [];
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 5 + 1;
+                this.speedX = Math.random() * 3 - 1.5;
+                this.speedY = Math.random() * 3 - 1.5;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.size > 0.2) this.size -= 0.1;
+            }
+
+            draw() {
+                ctx.fillStyle = 'rgba(151, 188, 98, 0.8)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function createParticles() {
+            for (let i = 0; i < 100; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+
+                if (particles[i].size <= 0.2) {
+                    particles.splice(i, 1);
+                    i--;
+                }
+            }
+            requestAnimationFrame(animateParticles);
+        }
+
+        createParticles();
+        animateParticles();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+</body>
+</html>

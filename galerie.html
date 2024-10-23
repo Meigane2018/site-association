@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerie - Association des Phytopathologistes de la Zone CEMAC</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        :root {
+            --primary-color: #2C5F2D;
+            --secondary-color: #97BC62;
+            --background-light: #f0f4f8;
+            --background-dark: #2a2a2a;
+            --text-light: #333;
+            --text-dark: #f0f4f8;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-light);
+            color: var(--text-light);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.dark-mode {
+            background-color: var(--background-dark);
+            color: var(--text-dark);
+        }
+
+        .neumorphic {
+            background: var(--background-light);
+            box-shadow: 8px 8px 16px #d1d9e6, -8px -8px 16px #ffffff;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .dark-mode .neumorphic {
+            background: var(--background-dark);
+            box-shadow: 8px 8px 16px #1a1a1a, -8px -8px 16px #3a3a3a;
+        }
+
+        .neumorphic:hover {
+            transform: translateY(-5px);
+            box-shadow: 12px 12px 20px #d1d9e6, -12px -12px 20px #ffffff;
+        }
+
+        .dark-mode .neumorphic:hover {
+            box-shadow: 12px 12px 20px #1a1a1a, -12px -12px 20px #3a3a3a;
+        }
+
+        .gallery-item {
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: scale(0.9);
+        }
+
+        .gallery-item.show {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <div id="particles-js"></div>
+
+    <header class="bg-white shadow-md dark:bg-gray-800 transition-colors duration-300">
+        <nav class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold text-green-700">
+                    <img src="images/logo.jpeg" alt="Logo" class="inline-block mr-2 rounded-full" width="50px">
+                    Phyto Asso
+                </div>
+                <div class="space-x-4">
+                    <a href="index.html" class="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white">Accueil</a>
+                    <a href="actualite.html" class="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white">Actualités</a>
+                    <a href="ressources.html" class="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white">Ressources</a>
+                    <a href="evenement.html" class="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white">Evenements</a>
+                    <a href="galerie.html" class="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white">Galerie</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white">Contact</a>
+                    <button id="darkModeToggle" class="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-grow container mx-auto px-6 py-8">
+        <h1 class="text-4xl font-bold mb-8 text-center text-primary-color dark:text-white">Notre Galerie</h1>
+
+        <div class="mb-8 flex justify-center space-x-4">
+            <button class="filter-btn neumorphic px-4 py-2" data-filter="all">Tous</button>
+            <button class="filter-btn neumorphic px-4 py-2" data-filter="research">Recherche</button>
+            <button class="filter-btn neumorphic px-4 py-2" data-filter="events">Événements</button>
+            <button class="filter-btn neumorphic px-4 py-2" data-filter="plants">Plantes</button>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div class="gallery-item neumorphic p-4" data-category="research">
+                <img src="https://picsum.photos/400/300?random=1" alt="Recherche en laboratoire" class="w-full h-48 object-cover rounded-lg">
+                <p class="mt-2 text-center">Recherche en laboratoire</p>
+            </div>
+            <div class="gallery-item neumorphic p-4" data-category="events">
+                <img src="https://picsum.photos/400/300?random=2" alt="Conférence annuelle" class="w-full h-48 object-cover rounded-lg">
+                <p class="mt-2 text-center">Conférence annuelle</p>
+            </div>
+            <div class="gallery-item neumorphic p-4" data-category="plants">
+                <img src="https://picsum.photos/400/300?random=3" alt="Étude sur le terrain" class="w-full h-48 object-cover rounded-lg">
+                <p class="mt-2 text-center">Étude sur le terrain</p>
+            </div>
+            <div class="gallery-item neumorphic p-4" data-category="research">
+                <img src="https://picsum.photos/400/300?random=4" alt="Analyse microscopique" class="w-full h-48 object-cover rounded-lg">
+                <p class="mt-2 text-center">Analyse microscopique</p>
+            </div>
+            <div class="gallery-item neumorphic p-4" data-category="events">
+                <img src="https://picsum.photos/400/300?random=5" alt="Atelier de formation" class="w-full h-48 object-cover rounded-lg">
+                <p class="mt-2 text-center">Atelier de formation</p>
+            </div>
+            <div class="gallery-item neumorphic p-4" data-category="plants">
+                <img src="https://picsum.photos/400/300?random=6" alt="Spécimen de plante malade" class="w-full h-48 object-cover rounded-lg">
+                <p class="mt-2 text-center">Spécimen de plante malade</p>
+            </div>
+            <div class="gallery-item neumorphic p-4" data-category="research">
+                <img src="https://picsum.photos/400/300?random=7" alt="Expérimentation en serre" class="w-full h-48 object-cover rounded-lg">
+                <p class="mt-2 text-center">Expérimentation en serre</p>
+            </div>
+            <div class="gallery-item neumorphic p-4" data-category="events">
+                <img src="https://picsum.photos/400/300?random=8" alt="Séminaire international" class="w-full h-48 object-cover rounded-lg">
+                <p class="mt-2 text-center">Séminaire international</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white shadow-md dark:bg-gray-800 transition-colors duration-300 mt-12">
+        <div class="container mx-auto px-6 py-4">
+            <p class="text-center text-gray-600 dark:text-gray-300">&copy; 2023 Association des Phytopathologistes de la Zone CEMAC. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Dark mode toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const isDarkMode = body.classList.contains('dark-mode');
+            darkModeToggle.innerHTML = isDarkMode ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        });
+
+        // Gallery filter
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const filter = button.getAttribute('data-filter');
+                
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.classList.add('show');
+                    } else {
+                        item.classList.remove('show');
+                    }
+                });
+
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+            });
+        });
+
+        // Initial animation
+        gsap.from(galleryItems, {
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            stagger: 0.1,
+            ease: 'power3.out',
+            onComplete: () => galleryItems.forEach(item => item.classList.add('show'))
+        });
+
+        // Particles.js
+        particlesJS("particles-js", {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: "#97BC62" },
+                shape: { type: "circle" },
+                opacity: { value: 0.5, random: false },
+                size: { value: 3, random: true },
+                line_linked: { enable: true, distance: 150, color: "#97BC62", opacity: 0.4, width: 1 },
+                move: { enable: true, speed: 6, direction: "none", random: false, straight: false, out_mode: "out", bounce: false }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" }, resize: true },
+                modes: { grab: { distance: 400, line_linked: { opacity: 1 } }, bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 }, repulse: { distance: 200, duration: 0.4 }, push: { particles_nb: 4 }, remove: { particles_nb: 2 } }
+            },
+            retina_detect: true
+        });
+    </script>
+</body>
+</html>

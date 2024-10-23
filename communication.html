@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan de Communication - Conférence de Phytopathologie</title>
+    <style>
+        :root {
+            --primary-color: #3a7563;
+            --secondary-color: #a8d5ba;
+            --text-color: #333;
+            --bg-color: #e0e5ec;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-color);
+        }
+
+        .neumorphic-card {
+            background: var(--bg-color);
+            border-radius: 15px;
+            box-shadow: 8px 8px 15px #a3b1c6, -8px -8px 15px #ffffff;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .neumorphic-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .phase-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .phase-card {
+            flex-basis: calc(33.33% - 1rem);
+            margin-bottom: 1rem;
+        }
+
+        .tool-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .tool-item {
+            background: var(--secondary-color);
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 4px 4px 10px #a3b1c6, -4px -4px 10px #ffffff;
+        }
+
+        .tool-details {
+            display: none;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .show-details {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .show-details:hover {
+            background: #2c5a4c;
+        }
+
+        @media (max-width: 768px) {
+            .phase-card {
+                flex-basis: 100%;
+            }
+        }
+
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div class="container">
+        <h1>Plan de Communication</h1>
+
+        <section class="neumorphic-card">
+            <h2>2.9.1 Les phases de la communication</h2>
+            <div class="phase-container">
+                <div class="phase-card neumorphic-card">
+                    <h3>Avant la conférence</h3>
+                    <ul>
+                        <li>Annonces</li>
+                        <li>Lettre</li>
+                        <li>Radiotélévision</li>
+                    </ul>
+                </div>
+                <div class="phase-card neumorphic-card">
+                    <h3>Pendant la Conférence</h3>
+                    <ul>
+                        <li>Information aux media</li>
+                    </ul>
+                </div>
+                <div class="phase-card neumorphic-card">
+                    <h3>Après la conférence</h3>
+                    <ul>
+                        <li>Livres des abstracts</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="neumorphic-card">
+            <h2>2.9.2 Les outils de communication</h2>
+            <ul class="tool-list">
+                <li class="tool-item">
+                    <h3>Textes écrits et mis en ligne, envoyé par mails, par whatsapp</h3>
+                    <button class="show-details">Voir les détails</button>
+                    <div class="tool-details">
+                        <p><strong>Objet :</strong> [À spécifier]</p>
+                        <p><strong>Quand :</strong> [Dates à préciser]</p>
+                        <p><strong>Où :</strong> [Lieu à préciser]</p>
+                        <p><strong>Comité scientifique :</strong> [À spécifier]</p>
+                        <p><strong>Comité local d'organisation :</strong> [À spécifier]</p>
+                        <p><strong>Comment participer :</strong> [Instructions à fournir]</p>
+                        <p><strong>Contact :</strong> [Téléphone, e-mail, site web à ajouter]</p>
+                    </div>
+                </li>
+                <li class="tool-item">
+                    <h3>Flyers</h3>
+                    <button class="show-details">Voir les détails</button>
+                    <div class="tool-details">
+                        <p><strong>Objet :</strong> [À spécifier]</p>
+                        <p><strong>Quand :</strong> [Dates à préciser]</p>
+                        <p><strong>Où :</strong> [Lieu à préciser]</p>
+                        <p><strong>Comité scientifique :</strong> [À spécifier]</p>
+                        <p><strong>Comité local d'organisation :</strong> [À spécifier]</p>
+                        <p><strong>Comment participer :</strong> [Instructions à fournir]</p>
+                        <p><strong>Contact :</strong> [Téléphone, e-mail, site web à ajouter]</p>
+                    </div>
+                </li>
+                <li class="tool-item">
+                    <h3>La participation aux émissions radio et télé</h3>
+                    <button class="show-details">Voir les détails</button>
+                    <div class="tool-details">
+                        <p><strong>Objet :</strong> [À spécifier]</p>
+                        <p><strong>Quand :</strong> [Dates à préciser]</p>
+                        <p><strong>Où :</strong> [Lieu à préciser]</p>
+                        <p><strong>Comité scientifique :</strong> [À spécifier]</p>
+                        <p><strong>Comité local d'organisation :</strong> [À spécifier]</p>
+                        <p><strong>Comment participer :</strong> [Instructions à fournir]</p>
+                        <p><strong>Contact :</strong> [Téléphone, e-mail, site web à ajouter]</p>
+                    </div>
+                </li>
+                <li class="tool-item">
+                    <h3>Les demandes d'aide</h3>
+                    <button class="show-details">Voir les détails</button>
+                    <div class="tool-details">
+                        <p><strong>Objet :</strong> [À spécifier]</p>
+                        <p><strong>Quand :</strong> [Dates à préciser]</p>
+                        <p><strong>Où :</strong> [Lieu à préciser]</p>
+                        <p><strong>Comité scientifique :</strong> [À spécifier]</p>
+                        <p><strong>Comité local d'organisation :</strong> [À spécifier]</p>
+                        <p><strong>Comment participer :</strong> [Instructions à fournir]</p>
+                        <p><strong>Contact :</strong> [Téléphone, e-mail, site web à ajouter]</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const showDetailsButtons = document.querySelectorAll('.show-details');
+            showDetailsButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const details = button.nextElementSibling;
+                    details.style.display = details.style.display === 'none' ? 'block' : 'none';
+                });
+            });
+
+            particlesJS('particles-js', {
+                particles: {
+                    number: { value: 80, density: { enable: true, value_area: 800 } },
+                    color: { value: "#3a7563" },
+                    shape: { type: "circle" },
+                    opacity: { value: 0.5, random: false },
+                    size: { value: 3, random: true },
+                    line_linked: { enable: true, distance: 150, color: "#3a7563", opacity: 0.4, width: 1 },
+                    move: { enable: true, speed: 6, direction: "none", random: false, straight: false, out_mode: "out", bounce: false }
+                },
+                interactivity: {
+                    detect_on: "canvas",
+                    events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" }, resize: true },
+                    modes: { grab: { distance: 400, line_linked: { opacity: 1 } }, bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 }, repulse: { distance: 200, duration: 0.4 }, push: { particles_nb: 4 }, remove: { particles_nb: 2 } }
+                },
+                retina_detect: true
+            });
+        });
+    </script>
+</body>
+</html>

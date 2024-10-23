@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devenir Membre - Association des Phytopathologistes de la Zone CEMAC</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-green: #2E7D32;
+            --secondary-green: #4CAF50;
+            --light-green: #A5D6A7;
+            --dark-green: #1B5E20;
+            --white: #FFFFFF;
+
+            
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--light-green);
+            color: var(--dark-green);
+        }
+
+        .btn {
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .card {
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .form-input {
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            border-color: var(--secondary-green);
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.3);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <header class="bg-white shadow-md">
+        <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="text-2xl font-bold text-green-700">
+                <img src="images/logo.jpeg" alt="Logo" class="inline-block mr-2 rounded-full" width="50px">
+                Phyto Asso
+            </div>
+            <ul class="flex space-x-6">
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="actualite.html" class="nav-link">Actualités</a></li>
+                <li><a href="ressources.html" class="nav-link">Ressources</a></li>
+                <li><a href="evenement.html" class="nav-link">Événements</a></li>
+                <li><a href="galerie.html" class="nav-link">Galerie</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="btn-primary">Deconnexion</button>
+        </nav>
+    </header>
+
+    <main class="flex-grow container mx-auto px-4 py-8">
+        <h1 class="text-4xl font-bold mb-8 text-center">Devenir Membre</h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Registration Form -->
+            <div class="card p-6">
+                <h2 class="text-2xl font-bold mb-4">Formulaire d'Inscription</h2>
+                <form>
+                    <div class="mb-4">
+                        <label for="name" class="block mb-2">Nom complet</label>
+                        <input type="text" id="name" name="name" class="w-full px-3 py-2 border rounded-md form-input" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="block mb-2">Adresse e-mail</label>
+                        <input type="email" id="email" name="email" class="w-full px-3 py-2 border rounded-md form-input" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="institution" class="block mb-2">Institution/Université</label>
+                        <input type="text" id="institution" name="institution" class="w-full px-3 py-2 border rounded-md form-input" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="expertise" class="block mb-2">Domaine d'expertise</label>
+                        <input type="text" id="expertise" name="expertise" class="w-full px-3 py-2 border rounded-md form-input" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="password" class="block mb-2">Mot de passe</label>
+                        <input type="password" id="password" name="password" class="w-full px-3 py-2 border rounded-md form-input" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="confirm_password" class="block mb-2">Confirmer le mot de passe</label>
+                        <input type="password" id="confirm_password" name="confirm_password" class="w-full px-3 py-2 border rounded-md form-input" required>
+                    </div>
+                    <button type="submit" class="bg-secondary-green text-black px-4 py-2 rounded-full font-semibold btn w-full"> S'inscrire</button>
+                </form>
+            </div>
+
+            <!-- Membership Benefits -->
+            <div>
+                <div class="card p-6 mb-8">
+                    <h2 class="text-2xl font-bold mb-4">Avantages de l'Adhésion</h2>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-secondary-green mr-2"></i>
+                            Accès à une vaste bibliothèque de ressources scientifiques
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-secondary-green mr-2"></i>
+                            Participation à des conférences et séminaires exclusifs
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-secondary-green mr-2"></i>
+                            Networking avec des experts en phytopathologie
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-secondary-green mr-2"></i>
+                            Opportunités de collaboration sur des projets de recherche
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-secondary-green mr-2"></i>
+                            Accès à des outils de collaboration en ligne
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-secondary-green mr-2"></i>
+                            Réductions sur les frais d'inscription aux événements
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- FAQ Section -->
+                <div class="card p-6">
+                    <h2 class="text-2xl font-bold mb-4">Questions Fréquentes</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <h3 class="font-semibold">Qui peut devenir membre ?</h3>
+                            <p>Tout professionnel ou étudiant en phytopathologie ou dans un domaine connexe peut devenir membre.</p>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold">Quel est le coût de l'adhésion ?</h3>
+                            <p>Les frais d'adhésion varient selon le statut (étudiant, professionnel) et la durée. Contactez-nous pour plus d'informations.</p>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold">Comment puis-je renouveler mon adhésion ?</h3>
+                            <p>Le renouvellement peut se faire en ligne via votre compte membre ou en contactant notre service d'adhésion.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-primary-green text-white py-8 mt-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="font-bold mb-2">À propos de l'APZC</h3>
+                    <p>L'Association des Phytopathologistes de la Zone CEMAC promeut la recherche et l'éducation en phytopathologie dans la région.</p>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-2">Liens rapides</h3>
+                    <ul>
+                        <li><a href="#" class="hover:text-light-green">Accueil</a></li>
+                        <li><a href="#" class="hover:text-light-green">Ressources</a></li>
+                        <li><a href="#" class="hover:text-light-green">Événements</a></li>
+                        <li><a href="#" class="hover:text-light-green">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-2">Nous contacter</h3>
+                    <p>Email: contact@apzc.org</p>
+                    <p>Téléphone: +237 123 456 789</p>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-2xl hover:text-light-green"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-2xl hover:text-light-green"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-2xl hover:text-light-green"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Add form validation
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Add your form validation logic here
+            alert('Formulaire soumis avec succès ! Un email de confirmation vous sera envoyé sous peu.');
+        });
+
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
