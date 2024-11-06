@@ -3,118 +3,234 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phytopathology Association</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>APHYCEM</title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
         :root {
-            --primary-color: #4a7c59;
-            --secondary-color: #ffffff;
-            --background-color: #f4f4f4;
-            --text-color: #333333;
+            --primary-color: #2c5530;
+            --secondary-color: #4a8b3f;
+            --background-color: #f0f4f0;
+            --glass-background: rgba(255, 255, 255, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --text-color: #1a1a1a;
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background-color: var(--background-color);
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f0f4f0, #e6efe6);
+            overflow-x: hidden;
+        }
+
+        .background-animation {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .leaf {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234a8b3f' opacity='0.2'%3E%3Cpath d='M17,8C8,10,5.9,16.17,3.82,21.34L5.71,22l1-2.3A4.49,4.49,0,0,0,8,20C19,20,22,3,22,3,21,5,14,5.25,9,6.25S2,11.5,2,13.5a6.23,6.23,0,0,0,1.4,3.3L3.3,17l0.3-0.3C3.3,15.5,3,14.7,3,13.5c0-1.67,5-6.75,14-5.5Z'/%3E%3C/svg%3E") center/contain no-repeat;
+            animation: float 15s linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, -100%) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translate(100vw, 100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .login-container {
+            background: var(--glass-background);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 40px;
+            width: 100%;
+            max-width: 900px;
+            display: flex;
+            gap: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-section {
+            flex: 1;
             color: var(--text-color);
         }
 
-        .nav-link {
+        .info-section h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
             color: var(--primary-color);
-            font-weight: 500;
-            transition: color 0.3s ease;
         }
 
-        .nav-link:hover {
-            color: #2c4a35;
+        .info-section p {
+            margin-bottom: 20px;
+            line-height: 1.6;
         }
 
-        .btn-primary {
-            background-color: var(--primary-color);
-            color: var(--secondary-color);
-            padding: 10px 20px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
+        .login-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
-        .btn-primary:hover {
-            background-color: #2c4a35;
+        .login-box {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
         }
 
-        .hero-section {
-            background-color: var(--primary-color);
-            color: var(--secondary-color);
+        .login-box:hover {
+            transform: translateY(-5px);
         }
 
-        .image-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
+        .login-box h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-align: center;
         }
 
-        .image-grid img {
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--text-color);
+        }
+
+        .input-group input {
             width: 100%;
-            height: 200px;
-            object-fit: cover;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .input-group input:focus {
+            border-color: var(--secondary-color);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .login-btn:hover {
+            background: var(--secondary-color);
+        }
+
+        @media (max-width: 768px) {
+            .login-container {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .info-section h1 {
+                font-size: 2em;
+            }
         }
     </style>
 </head>
 <body>
-    <header class="bg-white shadow-md">
-        <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="text-2xl font-bold text-green-700">
-                <img src="images/logo3.png" alt="Logo" class="inline-block mr-2 rounded-full" width="80px">
-                APHYCEM
-            </div>
-            <ul class="flex space-x-6">
-                <li><a href="index.html" class="nav-link">Accueil</a></li>
-                <li><a href="actualite.html" class="nav-link">Actualités</a></li>
-                <li><a href="ressources.html" class="nav-link">Ressources</a></li>
-                <li><a href="evenement.html" class="nav-link">Événements</a></li>
-                <li><a href="galerie.html" class="nav-link">Galerie</a></li>
-                <li><a href="contact.html" class="nav-link">Contact</a></li>
-            </ul>
-            <button class="btn-primary"> <a href="member.html">S'inscrire</a></button>
-        </nav>
-    </header>
-
-    <main>
-        <section class="hero-section py-20">
-            <div class="container mx-auto px-4  text-center">
-                <h1 class="text-4xl font-bold mb-4">Bienvenue dans notre</h1>
-                <h1 class="text-4xl font-bold mb-4">Association de Phytopathologiste</h1>
-                <p class="text-xl mb-8">La Sécurité Alimentaire et la Qualité des Aliments </p>
-            </div>
-        </section>
-
-        <section class="container mx-auto px-4 py-12">
-            <div class="flex flex-wrap -mx-4">
-                <div class="w-full md:w-1/2 px-4 mb-8">
-                    <h2 class="text-3xl font-bold mb-4">L'APHYCEM</h2>
-                    <p class="mb-4">L’Association des Phytopathologistes de la Zone CEMAC qui a pour acronyme APHYCEM a été créée en 2003 et officielle déclarée sous le numéro  0114/RDA/J06/BAPP du 20-Fev-2003 à la préfecture de Yaoundé Cameroun.</p>
-                    <p class="mb-4">Cette association scientifique regroupe, des chercheurs des instituts de recherches publiques, des institutions privés, les enseignants de phytopathologies des universités d’Etat et des Universités privées.</p>
-                    <p class="mb-4">Au cours de  la période allant de 2003 à 2019, l’APHYCEM a connu un grand succès avec l’organisation d’une Conférence International à Dschang et une assez grande mobilisation de ses membres.
-                        <br>Après ce succès l’Association a connu une latence voir un refroidissement.
-                    </p>
-                    <p class="mb-4">En 2019 sur la demande de son président, une série de réflexions a été initiée. Le présent plan d’action est le fruit de certaines de ces réflexions et regroupe un ensemble des axes d’orientations perspectives pour cette association scientifique.</p>
-                    <button class="btn-primary"><a href="savoirplus.html">En savoir plus</a></button>
+    <div class="background-animation" id="background-animation"></div>
+    
+    <div class="container">
+        <div class="login-container">
+            <div class="login-section">
+                <div class="login-box">
+                    <h2><a href="accueil.html">Utilisateur/Visiteur</a></h2>
                 </div>
-                <div class="w-full md:w-1/2 px-4">
-                    <div class="image-grid">
-                        <img src="images/Image4.jpg" alt="Plant close-up" class="rounded">
-                        <img src="images/Image7.jpg" alt="Soil with seedlings" class="rounded">
-                        <img src="images/Image3.jpg" alt="Leafy plants" class="rounded">
-                        <img src="images/Image8z.jpg" alt="Plant leaves" class="rounded">
-                    </div>
+
+                <div class="login-box">
+                    <h2>Administrateur</h2>
+                    <form id="adminForm">
+                        <div class="input-group">
+                            <label>Email</label>
+                            <input type="email" required placeholder="Votre email">
+                        </div>
+                        <div class="input-group">
+                            <label>Mot de passe</label>
+                            <input type="password" required placeholder="Mot de passe admin">
+                        </div>
+                        <button type="submit" class="login-btn">Accès Administration</button>
+                    </form>
                 </div>
             </div>
-        </section>
-    </main>
-
-    <footer class="bg-green-800 text-white py-8">
-        <div class="container mx-auto px-4 text-center">
-            <p>&copy; 2024 Association des Phytopathologistes de la Zone CEMAC. Tous droits réservés.</p>
         </div>
-    </footer>
+    </div>
+
+    <script>
+        // Animation d'arrière-plan
+        function createLeaves() {
+            const container = document.getElementById('background-animation');
+            for (let i = 0; i < 15; i++) {
+                const leaf = document.createElement('div');
+                leaf.className = 'leaf';
+                leaf.style.left = ${Math.random() * 100}vw;
+                leaf.style.animationDelay = ${Math.random() * 15}s;
+                container.appendChild(leaf);
+            }
+        }
+
+        createLeaves();
+
+        // Gestion des formulaires
+        document.getElementById('userForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Ajoutez ici la logique de connexion utilisateur
+            console.log('Tentative de connexion utilisateur');
+        });
+
+        document.getElementById('adminForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Ajoutez ici la logique de connexion admin
+            console.log('Tentative de connexion admin');
+        });
+    </script>
 </body>
 </html>

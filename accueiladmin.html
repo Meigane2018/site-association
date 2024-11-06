@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APHYCEM</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4a7c59;
+            --secondary-color: #ffffff;
+            --background-color: #f4f4f4;
+            --text-color: #333333;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        .nav-link {
+            color: var(--primary-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #2c4a35;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 0.625rem 1.25rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary:hover {
+            background-color: #2c4a35;
+        }
+
+        .hero-section {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 2rem 1rem;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .image-grid img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+        }
+
+        
+        .mobile-menu {
+            display: none;
+        }
+
+        .menu-button {
+            display: none;
+        }
+
+        @media (max-width: 1024px) {
+            .nav-desktop {
+                display: none;
+            }
+
+            .menu-button {
+                display: block;
+                background: none;
+                border: none;
+                font-size: 1.5rem;
+                color: var(--primary-color);
+                cursor: pointer;
+            }
+
+            .mobile-menu {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 1rem;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                z-index: 1000;
+            }
+
+            .mobile-menu.active {
+                display: block;
+            }
+
+            .mobile-menu ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            .mobile-menu li {
+                margin: 1rem 0;
+                text-align: center;
+            }
+
+            .hero-section h1 {
+                font-size: 1.75rem;
+            }
+
+            .hero-section p {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .image-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .hero-section {
+                padding: 2rem 1rem;
+            }
+
+            .hero-section h1 {
+                font-size: 1.5rem;
+            }
+
+            .btn-primary {
+                width: 100%;
+                margin: 0.5rem 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .image-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-section h1 {
+                font-size: 1.25rem;
+            }
+
+            .text-4xl {
+                font-size: 1.5rem;
+            }
+
+            .text-3xl {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-white shadow-md fixed w-full top-0 z-50">
+        <nav class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold text-green-700 flex items-center">
+                    <img src="images/logo3.png" alt="Logo" class="inline-block mr-2 rounded-full" style="max-width: 60px; height: auto;">
+                    <span class="hidden sm:inline">APHYCEM</span>
+                </div>
+
+                
+                <ul class="nav-desktop hidden lg:flex space-x-4">
+                    <li><a href="accueil.html" class="nav-link">Accueil</a></li>
+                    <li><a href="actualites.html" class="nav-link">Actualités</a></li>
+                    <li><a href="ressources.html" class="nav-link">Ressources</a></li>
+                    <li><a href="evenement.html" class="nav-link">Événements</a></li>
+                    <li><a href="galeries.html" class="nav-link">Galerie</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+
+                <button class="btn-primary hidden lg:block">
+                    <a href="member.html">S'inscrire</a>
+                </button>
+
+                
+                <button class="menu-button lg:hidden">☰</button>
+            </div>
+        </nav>
+
+        
+        <div class="mobile-menu">
+            <ul>
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="actualites.html" class="nav-link">Actualités</a></li>
+                <li><a href="ressources.html" class="nav-link">Ressources</a></li>
+                <li><a href="evenement.html" class="nav-link">Événements</a></li>
+                <li><a href="galeries.html" class="nav-link">Galerie</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="member.html" class="btn-primary block">S'inscrire</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="mt-20">
+        <section class="hero-section py-10 sm:py-20">
+            <div class="container mx-auto px-4 text-center">
+                <h1 class="text-2xl sm:text-4xl font-bold mb-4">Bienvenue dans notre</h1>
+                <h1 class="text-2xl sm:text-4xl font-bold mb-4">Association de Phytopathologiste</h1>
+                <p class="text-lg sm:text-xl mb-8">La Sécurité Alimentaire et la Qualité des Aliments</p>
+            </div>
+        </section>
+
+        <section class="container mx-auto px-4 py-8 sm:py-12">
+            <div class="flex flex-wrap -mx-4">
+                <div class="w-full lg:w-1/2 px-4 mb-8">
+                    <h2 class="text-2xl sm:text-3xl font-bold mb-4">L'APHYCEM</h2>
+                    <div class="space-y-4 text-sm sm:text-base">
+                        <p>L'Association des Phytopathologistes de la Zone CEMAC qui a pour acronyme APHYCEM a été créée en 2003 et officielle déclarée sous le numéro 0114/RDA/J06/BAPP du 20-Fev-2003 à la préfecture de Yaoundé Cameroun.</p>
+                        <p>Cette association scientifique regroupe, des chercheurs des instituts de recherches publiques, des institutions privés, les enseignants de phytopathologies des universités d'Etat et des Universités privées.</p>
+                        <p>Au cours de la période allant de 2003 à 2019, l'APHYCEM a connu un grand succès avec l'organisation d'une Conférence International à Dschang et une assez grande mobilisation de ses membres.<br>Après ce succès l'Association a connu une latence voir un refroidissement.</p>
+                        <p>En 2019 sur la demande de son président, une série de réflexions a été initiée. Le présent plan d'action est le fruit de certaines de ces réflexions et regroupe un ensemble des axes d'orientations perspectives pour cette association scientifique.</p>
+                    </div>
+                    <button class="btn-primary mt-4 w-full sm:w-auto">
+                        <a href="savoirplus.html">En savoir plus</a>
+                    </button>
+                </div>
+                <div class="w-full lg:w-1/2 px-4">
+                    <div class="image-grid">
+                        <img src="images/Image4.jpg" alt="Plant close-up" loading="lazy">
+                        <img src="images/Image7.jpg" alt="Soil with seedlings" loading="lazy">
+                        <img src="images/Image3.jpg" alt="Leafy plants" loading="lazy">
+                        <img src="images/Image8z.jpg" alt="Plant leaves" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-green-800 text-white py-6 sm:py-8">
+        <div class="container mx-auto px-4 text-center text-sm sm:text-base">
+            <p>&copy; 2024 Association des Phytopathologistes de la Zone CEMAC. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+        
+        const menuButton = document.querySelector('.menu-button');
+        const mobileMenu = document.querySelector('.mobile-menu');
+
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+
+        
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !menuButton.contains(e.target)) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 1024) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
